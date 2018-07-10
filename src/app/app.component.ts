@@ -13,11 +13,15 @@ import { HttpClient } from '@angular/common/http'
 })
 export class AppComponent implements OnInit{
   title = 'app';
+  countries
 
   constructor(private http: HttpClient){
     this.http.get('https://restcountries.eu/rest/v2/all')
       .subscribe(
-        (value) => console.log(value)
+        (value) => {
+          // console.log(value.name)
+          this.countries = value
+        }
       )
     
   }
