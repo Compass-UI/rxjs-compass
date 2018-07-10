@@ -15,6 +15,10 @@ export class AppComponent implements OnInit{
   title = 'app';
 
   constructor(private http: HttpClient){
+    this.http.get('https://restcountries.eu/rest/v2/all')
+      .subscribe(
+        (value) => console.log(value)
+      )
     
   }
   ngOnInit(){
@@ -33,8 +37,10 @@ export class AppComponent implements OnInit{
   mource = Observable.create(observer => {
     for (let n of this.numbers){
       observer.next(n)
+      console.log(`Values keep coming ${n}`)
     }
     observer.complete();
+    console.log('COMPLETE')
   })
 }
 
