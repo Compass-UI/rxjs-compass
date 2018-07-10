@@ -16,11 +16,23 @@ export class MarbleBeadsComponent implements OnInit {
     // console.log('ngOnInit')
 
     let source = Observable.create(observer => {
-      for(let n of this.countries){
-        alert(`Observable.create: ${n}`)
-        setTimeout(observer.next(n), 2000)
+
+      // for(let n of this.countries){
+      //   alert(`Observable.create: ${n}`)
+      //   setTimeout(observer.next(n), 2000)
+      // }
+      // observer.complete()
+      let index = 0
+      let produceValue = () => {
+        observer.next(this.countries[index++])
+        if(index<this.countries.length){
+          setTimeout(produceValue(), 2000);
+        }else{
+          observer.complete()
+        }
+
       }
-      observer.complete()
+      produceValue()
     })
 
     source.subscribe(
