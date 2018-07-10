@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, observable } from '../../../node_modules/rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'ual-marble-beads',
@@ -33,7 +35,7 @@ export class MarbleBeadsComponent implements OnInit {
 
       }
       produceValue()
-    })
+    }).map(c => `Country is: ${c}`)
 
     source.subscribe(
       value => { console.log(`Country is: ${value}`); this.observablecountries.push(`Country is: ${value}`) },
