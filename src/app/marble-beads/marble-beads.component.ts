@@ -36,7 +36,7 @@ export class MarbleBeadsComponent implements OnInit {
     })
 
     source.subscribe(
-      value => { console.log(`Country is: ${value}`); this.observablecountries.push = value },
+      value => { console.log(`Country is: ${value}`); this.observablecountries.push(`Country is: ${value}`) },
       e => console.log(`Error occured ${e}`),
       () => console.log('Complete')
     )
