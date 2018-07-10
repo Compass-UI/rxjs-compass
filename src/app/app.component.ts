@@ -20,6 +20,9 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.source.subscribe(new MyObserver())
     this.source.subscribe(new MyObserver())
+    this.source.subscribe(
+      value => console.log(value)
+    )
   }
 
   numbers = [1,2,3,60]
