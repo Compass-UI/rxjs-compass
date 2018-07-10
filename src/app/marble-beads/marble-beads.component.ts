@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable, observable } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'ual-marble-beads',
@@ -7,7 +7,8 @@ import { Observable } from '../../../node_modules/rxjs';
   styleUrls: ['./marble-beads.component.css']
 })
 export class MarbleBeadsComponent implements OnInit {
-  numbers = [1, 5, 10]
+  public countries = ["Afghanistan", "USA", "Canada", "Russia"]
+  observablecountries = []
 
   constructor() { }
 
@@ -15,14 +16,15 @@ export class MarbleBeadsComponent implements OnInit {
     // console.log('ngOnInit')
 
     let source = Observable.create(observer => {
-      for(let n of this.numbers){
-        observer.next(n)
+      for(let n of this.countries){
+        alert(`Observable.create: ${n}`)
+        setTimeout(observer.next(n), 2000)
       }
       observer.complete()
     })
 
     source.subscribe(
-      value => console.log(`Country is: ${value}`),
+      value => { console.log(`Country is: ${value}`); this.observablecountries.push = value },
       e => console.log(`Error occured ${e}`),
       () => console.log('Complete')
     )
