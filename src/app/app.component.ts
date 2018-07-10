@@ -3,6 +3,7 @@ import { Observable, Observer } from 'rxjs';
 // import { from } from 'rxjs/operators';
 import { Subject, ReplaySubject, from, of, range } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http'
 
 
 @Component({
@@ -13,9 +14,12 @@ import { map, filter, switchMap } from 'rxjs/operators';
 export class AppComponent implements OnInit{
   title = 'app';
 
+  constructor(private http: HttpClient){
+    
+  }
   ngOnInit(){
     this.source.subscribe(new MyObserver())
-
+    this.source.subscribe(new MyObserver())
   }
 
   numbers = [1,2,3,60]
