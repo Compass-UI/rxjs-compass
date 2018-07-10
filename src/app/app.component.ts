@@ -21,7 +21,9 @@ export class AppComponent implements OnInit{
     this.source.subscribe(new MyObserver())
     this.source.subscribe(new MyObserver())
     this.source.subscribe(
-      value => console.log(value)
+      value => console.log(value),
+      (e) => console.log(e),
+      () => console.log('complete')
     )
   }
 
