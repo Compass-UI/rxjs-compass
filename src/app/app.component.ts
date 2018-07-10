@@ -16,6 +16,12 @@ export class AppComponent implements OnInit{
   countries
   flags
   constructor(private http: HttpClient){
+    /**
+     * No internet connectivity: 
+     * 
+     * HttpErrorResponse {headers: HttpHeaders, status: 0, statusText: "Unknown Error", url: null, ok: false, …}
+     * XHR failed loading: GET "<URL>".
+     */
     this.http.get('https://restcountries.eu/rest/v2/all')
       .subscribe(
         (value) => {
@@ -23,6 +29,8 @@ export class AppComponent implements OnInit{
           this.countries = value;
           console.log(value)
           console.log(value[0].name) // Will work
+          console.log(value[1].name) // Will work
+        
           /**
            * Will not work
            * console.log(value.map(
@@ -31,23 +39,6 @@ export class AppComponent implements OnInit{
            */
         }
       )
-  }
-  ngOnInit(){
-    this.source.subscribe(new MyObserver())
-    this.source.subscribe(new MyObserver())
-    this.source.subscribe(
-      value => console.log(value),
-      (e) => console.log(e),
-      () => console.log('complete')
-    )
-    this.mource.subscribe(e=>console.log(e))
-    // this.countries.map(e => console.log(e.flag))
-    // console.log(this.countries); // Will not work because it is an observable
-    /**
-     * this.countries.subscribe(
-     * e => console.log(e) // Will not work
-     * )
-     */
   }
 
   numbers = [1,2,3,60]
@@ -68,11 +59,31 @@ export class AppComponent implements OnInit{
     console.log('COMPLETE')
     
   })
+// }).map(e => e * 10)  // ERROR TypeError: rxjs__WEBPACK_IMPORTED_MODULE_1__.Observable.create(...).map is not a function
 
   index = 0
   valuesOverTime(observer){
        observer.next(this.numbers[this.index++])
   }
+
+  ngOnInit(){
+    this.source.subscribe(new MyObserver())
+    this.source.subscribe(new MyObserver())
+    this.source.subscribe(
+      value => console.log(value),
+      (e) => console.log(e),
+      () => console.log('complete')
+    )
+    this.mource.subscribe(e=>console.log(e))
+    // this.countries.map(e => console.log(e.flag))
+    // console.log(this.countries); // Will not work because it is an observable
+    /**
+     * this.countries.subscribe(
+     * e => console.log(e) // Will not work
+     * )
+     */
+  }
+
 }
 
 class MyObserver implements Observer<number>{
