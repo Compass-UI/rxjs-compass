@@ -13,10 +13,18 @@ export class RxjsOperatorsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let index = 0
     let source = Observable.create(observer => {
+    let index = 0
+    // let produceValue = ()=> {
       observer.next(this.countries[index++])
       // observer.next()
+      // if(index<this.countries.length){
+        // setTimeout(produceValue(), 1000);
+      // }else{
+        // observer.complete()
+      // }
+    // }
+    // produceValue()
     })
     source.subscribe(
       val=> console.log(val),
