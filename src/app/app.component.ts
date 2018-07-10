@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 // import { from } from 'rxjs/operators';
 import { Subject, ReplaySubject, from, of, range } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
   source = from(this.numbers)
 }
 
-class MyObserver {
+class MyObserver implements Observer<number>{
   next(value) {
     console.log(`value: ${value}`)
   }
