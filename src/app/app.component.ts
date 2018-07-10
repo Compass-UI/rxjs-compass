@@ -14,16 +14,23 @@ import { HttpClient } from '@angular/common/http'
 export class AppComponent implements OnInit{
   title = 'app';
   countries
-
+  flags
   constructor(private http: HttpClient){
     this.http.get('https://restcountries.eu/rest/v2/all')
       .subscribe(
         (value) => {
           // console.log(value.name)
-          this.countries = value
+          this.countries = value;
+          console.log(value)
+          console.log(value[0].name) // Will work
+          /**
+           * Will not work
+           * console.log(value.map(
+           * e => console.log(e[0].name)
+           * ))
+           */
         }
       )
-    
   }
   ngOnInit(){
     this.source.subscribe(new MyObserver())
@@ -34,6 +41,15 @@ export class AppComponent implements OnInit{
       () => console.log('complete')
     )
     this.mource.subscribe(e=>console.log(e))
+    // this.countries.map(e => console.log(e.flag))
+    // console.log(this.countries); // Will not work because it is an observable
+    /**
+     * this.countries.subscribe(
+     * e => console.log(e) // Will not work
+     * )
+     */
+
+
   }
 
   numbers = [1,2,3,60]
