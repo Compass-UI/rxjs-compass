@@ -25,10 +25,17 @@ export class AppComponent implements OnInit{
       (e) => console.log(e),
       () => console.log('complete')
     )
+    this.mource.subscribe(e=>console.log(e))
   }
 
   numbers = [1,2,3,60]
   source = from(this.numbers)
+  mource = Observable.create(observer => {
+    for (let n of this.numbers){
+      observer.next(n)
+    }
+    observer.complete();
+  })
 }
 
 class MyObserver implements Observer<number>{
