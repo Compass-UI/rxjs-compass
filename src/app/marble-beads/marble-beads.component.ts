@@ -26,7 +26,7 @@ export class MarbleBeadsComponent implements OnInit {
       let produceValue = () => {
         observer.next(this.countries[index++])
         if(index<this.countries.length){
-          setTimeout(produceValue(), 2000);
+          setTimeout(produceValue, 2000);
         }else{
           observer.complete()
         }
