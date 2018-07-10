@@ -48,8 +48,6 @@ export class AppComponent implements OnInit{
      * e => console.log(e) // Will not work
      * )
      */
-
-
   }
 
   numbers = [1,2,3,60]
@@ -59,9 +57,22 @@ export class AppComponent implements OnInit{
       observer.next(n)
       console.log(`Values keep coming ${n}`)
     }
-    observer.complete();
+    if(this.index<this.numbers.length){
+      setTimeout(() => {
+        this.valuesOverTime(observer)
+      }, 2000);
+    }else{
+      observer.complete();
+    }
+    // observer.complete();
     console.log('COMPLETE')
+    
   })
+
+  index = 0
+  valuesOverTime(observer){
+       observer.next(this.numbers[this.index++])
+  }
 }
 
 class MyObserver implements Observer<number>{
