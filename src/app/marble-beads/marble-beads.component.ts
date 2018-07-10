@@ -12,7 +12,7 @@ export class MarbleBeadsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('ngOnInit')
+    // console.log('ngOnInit')
 
     let source = Observable.create(observer => {
       for(let n of this.numbers){
