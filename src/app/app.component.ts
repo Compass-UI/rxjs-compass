@@ -67,14 +67,14 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.source.subscribe(new MyObserver())
-    this.source.subscribe(new MyObserver())
-    this.source.subscribe(
+    this.source.subscribe(new MyObserver())  /** TODO: unsubscribe */
+    this.source.subscribe(new MyObserver())  /** TODO: unsubscribe */
+    this.source.subscribe(  /** TODO: unsubscribe */
       value => console.log(value),
       (e) => console.log(e),
       () => console.log('complete')
     )
-    this.mource.subscribe(e=>console.log(e))
+    this.mource.subscribe(e=>console.log(e))  /** TODO: unsubscribe */
     // this.countries.map(e => console.log(e.flag))
     // console.log(this.countries); // Will not work because it is an observable
     /**

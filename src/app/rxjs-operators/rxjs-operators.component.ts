@@ -16,7 +16,8 @@ export class RxjsOperatorsComponent implements OnInit {
     let source = Observable.create(observer => {
     let index = 0
     // let produceValue = ()=> {
-      observer.next(this.countries[index++])
+      // observer.next(this.countries[index++])
+      observer.next(this.countries)
       // observer.next()
       // if(index<this.countries.length){
         // setTimeout(produceValue(), 1000);
@@ -26,7 +27,8 @@ export class RxjsOperatorsComponent implements OnInit {
     // }
     // produceValue()
     })
-    source.subscribe(
+
+    source.subscribe( /** TODO: unsubscribe */
       val=> console.log(val),
       (error) => console.log(error),
       () => console.log('complete')
