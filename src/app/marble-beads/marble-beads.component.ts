@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, observable } from '../../../node_modules/rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+// import { Observable, observable } from '../../../node_modules/rxjs';
+import { Observable, observable } from 'rxjs';
+// import { map, filter, switchMap } from 'rxjs/operators';
+import { map, filter, switchMap } from '../../../node_modules/rxjs/operators';
 
 
 @Component({
@@ -34,8 +36,10 @@ export class MarbleBeadsComponent implements OnInit {
         }
 
       }
-      produceValue()
-    }).map(c => `Country is: ${c}`)
+      produceValue()//    ERROR TypeError: _node_modules_rxjs__WEBPACK_IMPORTED_MODULE_1__.Observable.create(...).map is not a function
+    // }).map(c => `Country is: ${c}`) 
+  })
+
 
     source.subscribe(
       value => { console.log(`Country is: ${value}`); this.observablecountries.push(`Country is: ${value}`) },

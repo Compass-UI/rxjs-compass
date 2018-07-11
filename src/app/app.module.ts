@@ -6,13 +6,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { RxjsOperatorsComponent } from './rxjs-operators/rxjs-operators.component';
 import { MarbleBeadsDirective } from './marble-beads.directive';
 import { MarbleBeadsComponent } from './marble-beads/marble-beads.component';
+import { TsLintComponent } from './ts-lint/ts-lint.component';
+import { RxjsClassicComponent } from './rxjs-classic/rxjs-classic.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RxjsOperatorsComponent,
     MarbleBeadsDirective,
-    MarbleBeadsComponent
+    MarbleBeadsComponent,
+    TsLintComponent,
+    RxjsClassicComponent
   ],
   imports: [
     BrowserModule,
